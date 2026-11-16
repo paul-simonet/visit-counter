@@ -1,0 +1,22 @@
+services:
+  site:
+    ports: !reset []
+    restart: unless-stopped
+  api:
+    ports: !reset []
+    restart: unless-stopped
+  db:
+    restart: unless-stopped
+  caddy:
+    image: caddy:2.11-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+volumes:
+  caddy-data:
+  caddy-config:

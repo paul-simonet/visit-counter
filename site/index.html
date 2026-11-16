@@ -1,0 +1,11 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Visit counter</title>
+<h1 id="out">Loading...</h1>
+<script>
+  const API = location.port === "8081" ? "http://localhost:8082" : "/api";
+  fetch(API + "/visits")
+    .then((r) => r.json())
+    .then((d) => (out.textContent = `Visits to this page: ${d.visits}`))
+    .catch(() => (out.textContent = "The API cannot be reached"));
+</script>
