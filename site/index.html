@@ -6,6 +6,6 @@
   const API = location.port === "8081" ? "http://localhost:8082" : "/api";
   fetch(API + "/visits")
     .then((r) => r.json())
-    .then((d) => (out.textContent = `Visits to this page: ${d.visits}`))
+    .then((d) => (out.textContent = `Visite sur cette page: ${d.visits}`))
     .catch(() => (out.textContent = "The API cannot be reached"));
 </script>
